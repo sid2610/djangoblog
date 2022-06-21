@@ -1,0 +1,44 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'style.css' %}">
+
+<!--top navigation bar-->
+
+<nav class="navbar">
+    <ul>
+        <li class="navitem" id="home"><a href="/">Home</a></li>
+        <li class="navitem" id="all"><a href="/all">All</a></li>
+        <li class="navitem" id="search">
+            <form method="" action="/search">
+                <input type="text" name="key">
+                <button type="submit">Search</button>
+            </form>
+        </li>
+        <li class="navitem" id="account" style="float: right;">
+            {% if user.is_authenticated %}
+            <div class="dropdown">
+                <a class="dropdown-button">{{user.username}}</a>
+                <div class="dropdown-content">
+                    <a href="/user/{{user.username}}">Your Blogs</a>
+                    <a href="/logout">Logout</a>
+                </div>
+            </div>
+            {% else %}
+            <form action="/login">
+                <button type="submit">Login</button>
+            </form>
+            {% endif %}
+        </li>
+    </ul>
+</nav>
+
+<!--search results-->
+
+<h1>Search Results</h1>
+{% for b in blogs %}
+<a href="/blog/{{b.id}}" style="text-decoration: none"><div class="blogpost">
+    <h4 class="blogtitle">{{b.title}}</h4>
+    <h5 class="bloginfo">{{b.author}}, {{b.date}}</h5>
+    <p class="blogbody">{{b.body}}</p><br>
+</div></a>
+{% endfor %}

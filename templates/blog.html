@@ -1,0 +1,44 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'style.css' %}">
+
+<!--top navigation bar-->
+
+<nav class="navbar">
+    <ul>
+        <li class="navitem" id="home"><a href="/">Home</a></li>
+        <li class="navitem" id="all"><a href="/all">All</a></li>
+        <li class="navitem" id="search">
+            <form method="" action="/search">
+                <input type="text" name="key">
+                <button type="submit">Search</button>
+            </form>
+        </li>
+        <li class="navitem" id="account" style="float: right;">
+            {% if user.is_authenticated %}
+            <div class="dropdown">
+                <a class="dropdown-button">{{user.username}}</a>
+                <div class="dropdown-content">
+                    <a href="/user/{{user.username}}">Your Blogs</a>
+                    <a href="/logout">Logout</a>
+                </div>
+            </div>
+            {% else %}
+            <form action="/login">
+                <button type="submit">Login</button>
+            </form>
+            {% endif %}
+        </li>
+    </ul>
+</nav>
+
+<!--blog-->
+
+{% if user.is_authenticated %}
+    {% if user.username == b.author %}
+    <br><a href="/delete/{{b.id}}">Delete Blog</a>
+    {% endif %}
+{% endif %}
+<h1>{{b.title}}</h1>
+<h3><a href="/user/{{b.author}}">{{b.author}}</a>, {{b.date}}</h3>
+<p>{{b.body}}</p>

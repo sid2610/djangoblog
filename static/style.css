@@ -1,0 +1,83 @@
+h1 {
+    color: blue;
+}
+
+h2 {
+    color: red;
+}
+
+h4, h5 {
+    margin-bottom: 0px;
+    margin-top: 10px;
+}
+
+textarea {
+    resize: none;
+}
+
+.navbar {
+    padding: 0.1%;
+    background-color: aqua;
+    align-items: center;
+}
+
+.navbar li {
+    color: blue;
+    display: inline;
+    width: 100px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.navbar form {
+    display: inline;
+}
+
+.dropdown {
+    width: 120px;
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    text-align: center;
+    position: absolute;
+    background-color: white;
+    display: none;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    padding: 12px;
+    padding-bottom: 10px;
+}
+
+.dropdown:hover .dropdown-content{display: block;}
+
+.column {
+    padding: 1%;
+    float: left;
+}
+
+.blogpost {
+    color: black;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 10px;
+    border-style: solid;
+    border-radius: 10px;
+    border-width: 2px;
+    border-color: black;
+    padding-bottom: 0%;
+}
+
+.blogpost .bloginfo {
+    text-align: right;
+}
+
+.blogbody {
+    display: block;
+    white-space: nowrap; /* forces text to single line */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 90%;
+}
