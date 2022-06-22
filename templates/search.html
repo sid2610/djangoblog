@@ -1,6 +1,6 @@
 {% load static %}
 
-<link rel="stylesheet" href="{% static 'style.css' %}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 <!--top navigation bar-->
 
@@ -11,22 +11,20 @@
         <li class="navitem" id="search">
             <form method="" action="/search">
                 <input type="text" name="key">
-                <button type="submit">Search</button>
+                <input type="image" src="{% static 'images/search.png' %}" alt="Submit" width="15px" height="15px">
             </form>
         </li>
         <li class="navitem" id="account" style="float: right;">
             {% if user.is_authenticated %}
             <div class="dropdown">
-                <a class="dropdown-button">{{user.username}}</a>
+                <img src="{% static 'images/account.png' %}" width="15px" height="15px" class="dropdown-button">
                 <div class="dropdown-content">
-                    <a href="/user/{{user.username}}">Your Blogs</a>
+                    <a href="/user/{{user.username}}">Your Blog</a>
                     <a href="/logout">Logout</a>
                 </div>
             </div>
             {% else %}
-            <form action="/login">
-                <button type="submit">Login</button>
-            </form>
+            <a href="/login">Login</a>
             {% endif %}
         </li>
     </ul>
